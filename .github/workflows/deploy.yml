@@ -1,0 +1,54 @@
+name: Build
+
+env:
+  GODOT_VERSION: 4.5.1
+  
+# Controls when the workflow will run
+on:
+  # Triggers the workflow on push or pull request events but only for the main branch
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+
+  # Allows you to run this workflow manually from the Actions tab
+  workflow_dispatch:
+
+# A workflow run is made up of one or more jobs that can run sequentially or in parallel
+jobs:
+  export-web:
+    name: Web Export
+    permissions:
+      contents: write
+    runs-on: ubuntu-latest
+    container:
+      image: docker://barichello/godot-ci:4.5.1
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v5
+        with:
+          submodules: true
+      - name: Setup
+        run: |
+          mkdir -v -p build/web ~/.local/share/godot/export_templates
+          mv /root/.local/share/godot/export_templates/${GODOT_VERSION}.stable ~/.local/share/godot/export_templates/${GODOT_VERSION}.stable
+      - name: Import resources once
+        continue-on-error: true
+        run: godot --headless -v --import
+      - name: Web Build
+        run: godot --headless -v --export-release "Web" ./build/web/index.html
+      - name: Upload Artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: web
+          path: build/web
+      # Installing rsync is needed in order to deploy to GitHub Pages. Without it, the build will fail.
+      - name: Install rsync
+        run: |
+          apt-get update && apt-get install -y rsync
+      - name: Deploy to GitHub Pages
+        uses: JamesIves/github-pages-deploy-action@v4
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          branch: gh-pages
+          folder: build/web
