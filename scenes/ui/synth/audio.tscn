@@ -1,0 +1,12 @@
+[gd_scene load_steps=3 format=3 uid="uid://c21k5klt4dpvw"]
+
+[ext_resource type="Script" uid="uid://cwnjmgahikejd" path="res://scenes/ui/synth/audio.gd" id="1_eb1kl"]
+
+[sub_resource type="AudioStreamGenerator" id="AudioStreamGenerator_ihvh5"]
+buffer_length = 0.02
+
+[node name="Audio" type="Node"]
+script = ExtResource("1_eb1kl")
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = SubResource("AudioStreamGenerator_ihvh5")
