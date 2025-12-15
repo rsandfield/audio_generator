@@ -3,7 +3,7 @@ extends Node2D
 @export var wave: WaveForm
 
 @onready var audio = $Audio
-@onready var visual = $CanvasLayer/PanelContainer/MarginContainer/Visualizer
+@onready var visual = $CanvasLayer/PanelContainer/MarginContainer/VBoxContainer/Visualizer
 
 
 func _ready():

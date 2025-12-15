@@ -1,0 +1,63 @@
+[gd_scene load_steps=10 format=3 uid="uid://cqow47bch5ocs"]
+
+[ext_resource type="Script" uid="uid://sfh4rb5133ks" path="res://scenes/main.gd" id="1_02nsg"]
+[ext_resource type="PackedScene" uid="uid://c21k5klt4dpvw" path="res://scenes/ui/synth/audio.tscn" id="1_2p1s2"]
+[ext_resource type="PackedScene" uid="uid://0navcu7wbufq" path="res://scenes/ui/synth/visualizer.tscn" id="2_2p1s2"]
+[ext_resource type="Script" uid="uid://31w1u0qmeyl5" path="res://common/signal/fundamental/sine_wave.gd" id="4_f8067"]
+[ext_resource type="Texture2D" uid="uid://bacve3el034q7" path="res://scenes/ui/mute_on.svg" id="5_tipki"]
+[ext_resource type="Texture2D" uid="uid://c2dqaogrnwhkf" path="res://scenes/ui/mute_off.svg" id="6_85g3d"]
+[ext_resource type="Texture2D" uid="uid://c7wmsw76nl3y1" path="res://scenes/ui/circle.svg" id="7_choun"]
+[ext_resource type="Texture2D" uid="uid://dggnwqxkvsc5y" path="res://scenes/ui/circle_dark.svg" id="8_ya4ey"]
+
+[sub_resource type="Resource" id="Resource_vspwy"]
+script = ExtResource("4_f8067")
+metadata/_custom_type_script = "uid://31w1u0qmeyl5"
+
+[node name="Main" type="Node2D"]
+script = ExtResource("1_02nsg")
+wave = SubResource("Resource_vspwy")
+
+[node name="Audio" parent="." instance=ExtResource("1_2p1s2")]
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="PanelContainer" type="PanelContainer" parent="CanvasLayer"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="CanvasLayer/PanelContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 25
+theme_override_constants/margin_top = 25
+theme_override_constants/margin_right = 25
+theme_override_constants/margin_bottom = 25
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/PanelContainer/MarginContainer"]
+layout_mode = 2
+
+[node name="Visualizer" parent="CanvasLayer/PanelContainer/MarginContainer/VBoxContainer" instance=ExtResource("2_2p1s2")]
+layout_mode = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="CanvasLayer/PanelContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="CheckButton" type="CheckButton" parent="CanvasLayer/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+theme_override_icons/checked = ExtResource("5_tipki")
+theme_override_icons/unchecked = ExtResource("6_85g3d")
+
+[node name="HSlider" type="HSlider" parent="CanvasLayer/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 1
+theme_override_icons/grabber = ExtResource("7_choun")
+theme_override_icons/grabber_highlight = ExtResource("7_choun")
+theme_override_icons/grabber_disabled = ExtResource("8_ya4ey")
+value = 100.0
+rounded = true
+
+[connection signal="toggled" from="CanvasLayer/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer/CheckButton" to="Audio" method="mute"]
+[connection signal="value_changed" from="CanvasLayer/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer/HSlider" to="Audio" method="set_volume"]
