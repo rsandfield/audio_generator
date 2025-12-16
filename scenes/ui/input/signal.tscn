@@ -1,0 +1,288 @@
+[gd_scene load_steps=14 format=3 uid="uid://4opgymebcc64"]
+
+[ext_resource type="Script" uid="uid://512nc0twd70i" path="res://scenes/ui/input/signal_ui.gd" id="1_rxskc"]
+[ext_resource type="Script" uid="uid://31w1u0qmeyl5" path="res://common/signal/fundamental/sine_wave.gd" id="2_bj5a3"]
+[ext_resource type="Texture2D" uid="uid://dn4nnblrqds2v" path="res://scenes/ui/input/check_button_checked.svg" id="2_fwg8v"]
+[ext_resource type="Texture2D" uid="uid://m4qvmw0rc0uo" path="res://scenes/ui/input/check_button.svg" id="3_ucdle"]
+[ext_resource type="Texture2D" uid="uid://cdp15kqcc15r3" path="res://scenes/ui/input/sine.svg" id="4_6bswb"]
+[ext_resource type="StyleBox" uid="uid://7sqo634n8tpu" path="res://scenes/ui/input/black.tres" id="4_f0c8i"]
+[ext_resource type="Texture2D" uid="uid://dfe32ys040yys" path="res://scenes/ui/input/triangle.svg" id="4_fwg8v"]
+[ext_resource type="Script" uid="uid://dq5qtanue1kj3" path="res://scenes/ui/input/number_input.gd" id="5_6bswb"]
+[ext_resource type="Texture2D" uid="uid://bpcilctwwwg6f" path="res://scenes/ui/input/square.svg" id="5_bj5a3"]
+[ext_resource type="Texture2D" uid="uid://y40x1p8mh4ps" path="res://scenes/ui/input/arrow_up.svg" id="6_bj5a3"]
+[ext_resource type="Texture2D" uid="uid://cfg4e87rkmp4n" path="res://scenes/ui/input/sawtooth.svg" id="7_6bswb"]
+[ext_resource type="Texture2D" uid="uid://cbt2vhtn143to" path="res://scenes/ui/input/arrow_down.svg" id="7_c0d4i"]
+
+[sub_resource type="Resource" id="Resource_c0d4i"]
+script = ExtResource("2_bj5a3")
+
+[node name="Signal" type="HBoxContainer"]
+offset_right = 476.0
+offset_bottom = 58.0
+script = ExtResource("1_rxskc")
+wave = SubResource("Resource_c0d4i")
+active = null
+
+[node name="CheckButton" type="CheckButton" parent="."]
+layout_mode = 2
+theme_override_colors/button_checked_color = Color(0, 1, 0, 1)
+theme_override_colors/button_unchecked_color = Color(0, 1, 0, 1)
+theme_override_icons/checked = ExtResource("2_fwg8v")
+theme_override_icons/unchecked = ExtResource("3_ucdle")
+
+[node name="OptionButton" type="OptionButton" parent="."]
+layout_mode = 2
+selected = 0
+allow_reselect = true
+item_count = 4
+popup/item_0/icon = ExtResource("4_6bswb")
+popup/item_0/id = 0
+popup/item_1/icon = ExtResource("5_bj5a3")
+popup/item_1/id = 1
+popup/item_2/icon = ExtResource("4_fwg8v")
+popup/item_2/id = 2
+popup/item_3/icon = ExtResource("7_6bswb")
+popup/item_3/id = 3
+
+[node name="Frequency" type="VBoxContainer" parent="."]
+layout_mode = 2
+
+[node name="LineEdit" type="LineEdit" parent="Frequency"]
+custom_minimum_size = Vector2(180, 0)
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 1, 0, 1)
+theme_override_colors/font_selected_color = Color(0, 1, 0, 1)
+theme_override_colors/caret_color = Color(0, 1, 0, 1)
+theme_override_colors/selection_color = Color(0, 0, 0, 1)
+theme_override_colors/clear_button_color = Color(0, 1, 0, 1)
+theme_override_colors/clear_button_color_pressed = Color(0, 1, 0, 1)
+theme_override_constants/caret_width = 2
+theme_override_font_sizes/font_size = 32
+theme_override_styles/normal = ExtResource("4_f0c8i")
+text = "440.00"
+alignment = 2
+max_length = 9
+emoji_menu_enabled = false
+script = ExtResource("5_6bswb")
+
+[node name="Increments" type="HBoxContainer" parent="Frequency"]
+layout_mode = 2
+alignment = 1
+
+[node name="Thousand" type="VBoxContainer" parent="Frequency/Increments"]
+layout_mode = 2
+alignment = 1
+
+[node name="Up" type="Button" parent="Frequency/Increments/Thousand"]
+custom_minimum_size = Vector2(30, 20)
+layout_mode = 2
+icon = ExtResource("6_bj5a3")
+flat = true
+expand_icon = true
+
+[node name="Down" type="Button" parent="Frequency/Increments/Thousand"]
+custom_minimum_size = Vector2(32, 20)
+layout_mode = 2
+icon = ExtResource("7_c0d4i")
+flat = true
+expand_icon = true
+
+[node name="Hundred" type="VBoxContainer" parent="Frequency/Increments"]
+layout_mode = 2
+alignment = 1
+
+[node name="Up" type="Button" parent="Frequency/Increments/Hundred"]
+custom_minimum_size = Vector2(30, 20)
+layout_mode = 2
+icon = ExtResource("6_bj5a3")
+flat = true
+expand_icon = true
+
+[node name="Down" type="Button" parent="Frequency/Increments/Hundred"]
+custom_minimum_size = Vector2(32, 20)
+layout_mode = 2
+icon = ExtResource("7_c0d4i")
+flat = true
+expand_icon = true
+
+[node name="Ten" type="VBoxContainer" parent="Frequency/Increments"]
+layout_mode = 2
+alignment = 1
+
+[node name="Up" type="Button" parent="Frequency/Increments/Ten"]
+custom_minimum_size = Vector2(30, 20)
+layout_mode = 2
+icon = ExtResource("6_bj5a3")
+flat = true
+expand_icon = true
+
+[node name="Down" type="Button" parent="Frequency/Increments/Ten"]
+custom_minimum_size = Vector2(32, 20)
+layout_mode = 2
+icon = ExtResource("7_c0d4i")
+flat = true
+expand_icon = true
+
+[node name="One" type="VBoxContainer" parent="Frequency/Increments"]
+layout_mode = 2
+alignment = 1
+
+[node name="Up" type="Button" parent="Frequency/Increments/One"]
+custom_minimum_size = Vector2(30, 20)
+layout_mode = 2
+icon = ExtResource("6_bj5a3")
+flat = true
+expand_icon = true
+
+[node name="Down" type="Button" parent="Frequency/Increments/One"]
+custom_minimum_size = Vector2(32, 20)
+layout_mode = 2
+icon = ExtResource("7_c0d4i")
+flat = true
+expand_icon = true
+
+[node name="Tenth" type="VBoxContainer" parent="Frequency/Increments"]
+layout_mode = 2
+alignment = 1
+
+[node name="Up" type="Button" parent="Frequency/Increments/Tenth"]
+custom_minimum_size = Vector2(30, 20)
+layout_mode = 2
+icon = ExtResource("6_bj5a3")
+flat = true
+expand_icon = true
+
+[node name="Down" type="Button" parent="Frequency/Increments/Tenth"]
+custom_minimum_size = Vector2(32, 20)
+layout_mode = 2
+icon = ExtResource("7_c0d4i")
+flat = true
+expand_icon = true
+
+[node name="Control" type="Control" parent="."]
+custom_minimum_size = Vector2(20, 0)
+layout_mode = 2
+
+[node name="Amplitude" type="VBoxContainer" parent="."]
+layout_mode = 2
+
+[node name="LineEdit" type="LineEdit" parent="Amplitude"]
+custom_minimum_size = Vector2(100, 0)
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 1, 0, 1)
+theme_override_colors/font_selected_color = Color(0, 1, 0, 1)
+theme_override_colors/caret_color = Color(0, 1, 0, 1)
+theme_override_colors/selection_color = Color(0, 0, 0, 1)
+theme_override_colors/clear_button_color = Color(0, 1, 0, 1)
+theme_override_colors/clear_button_color_pressed = Color(0, 1, 0, 1)
+theme_override_constants/caret_width = 2
+theme_override_font_sizes/font_size = 32
+theme_override_styles/normal = ExtResource("4_f0c8i")
+text = "1.00"
+alignment = 2
+max_length = 4
+emoji_menu_enabled = false
+script = ExtResource("5_6bswb")
+
+[node name="Increments" type="HBoxContainer" parent="Amplitude"]
+layout_mode = 2
+alignment = 1
+
+[node name="Ten" type="VBoxContainer" parent="Amplitude/Increments"]
+layout_mode = 2
+alignment = 1
+
+[node name="Up" type="Button" parent="Amplitude/Increments/Ten"]
+custom_minimum_size = Vector2(30, 20)
+layout_mode = 2
+icon = ExtResource("6_bj5a3")
+flat = true
+expand_icon = true
+
+[node name="Down" type="Button" parent="Amplitude/Increments/Ten"]
+custom_minimum_size = Vector2(32, 20)
+layout_mode = 2
+icon = ExtResource("7_c0d4i")
+flat = true
+expand_icon = true
+
+[node name="One" type="VBoxContainer" parent="Amplitude/Increments"]
+layout_mode = 2
+alignment = 1
+
+[node name="Up" type="Button" parent="Amplitude/Increments/One"]
+custom_minimum_size = Vector2(30, 20)
+layout_mode = 2
+icon = ExtResource("6_bj5a3")
+flat = true
+expand_icon = true
+
+[node name="Down" type="Button" parent="Amplitude/Increments/One"]
+custom_minimum_size = Vector2(32, 20)
+layout_mode = 2
+icon = ExtResource("7_c0d4i")
+flat = true
+expand_icon = true
+
+[node name="Tenth" type="VBoxContainer" parent="Amplitude/Increments"]
+layout_mode = 2
+alignment = 1
+
+[node name="Up" type="Button" parent="Amplitude/Increments/Tenth"]
+custom_minimum_size = Vector2(30, 20)
+layout_mode = 2
+icon = ExtResource("6_bj5a3")
+flat = true
+expand_icon = true
+
+[node name="Down" type="Button" parent="Amplitude/Increments/Tenth"]
+custom_minimum_size = Vector2(32, 20)
+layout_mode = 2
+icon = ExtResource("7_c0d4i")
+flat = true
+expand_icon = true
+
+[node name="Hundreth" type="VBoxContainer" parent="Amplitude/Increments"]
+layout_mode = 2
+alignment = 1
+
+[node name="Up" type="Button" parent="Amplitude/Increments/Hundreth"]
+custom_minimum_size = Vector2(30, 20)
+layout_mode = 2
+icon = ExtResource("6_bj5a3")
+flat = true
+expand_icon = true
+
+[node name="Down" type="Button" parent="Amplitude/Increments/Hundreth"]
+custom_minimum_size = Vector2(32, 20)
+layout_mode = 2
+icon = ExtResource("7_c0d4i")
+flat = true
+expand_icon = true
+
+[connection signal="toggled" from="CheckButton" to="." method="_on_check_button_toggled"]
+[connection signal="item_selected" from="OptionButton" to="." method="_on_wave_shape_changed"]
+[connection signal="text_changed" from="Frequency/LineEdit" to="Frequency/LineEdit" method="_on_text_changed"]
+[connection signal="text_submitted" from="Frequency/LineEdit" to="Frequency/LineEdit" method="_on_text_submitted"]
+[connection signal="value_changed" from="Frequency/LineEdit" to="." method="_on_frequency_value_changed"]
+[connection signal="pressed" from="Frequency/Increments/Thousand/Up" to="Frequency/LineEdit" method="_increment_value" binds= [1000.0]]
+[connection signal="pressed" from="Frequency/Increments/Thousand/Down" to="Frequency/LineEdit" method="_increment_value" binds= [-1000.0]]
+[connection signal="pressed" from="Frequency/Increments/Hundred/Up" to="Frequency/LineEdit" method="_increment_value" binds= [100.0]]
+[connection signal="pressed" from="Frequency/Increments/Hundred/Down" to="Frequency/LineEdit" method="_increment_value" binds= [-100.0]]
+[connection signal="pressed" from="Frequency/Increments/Ten/Up" to="Frequency/LineEdit" method="_increment_value" binds= [10.0]]
+[connection signal="pressed" from="Frequency/Increments/Ten/Down" to="Frequency/LineEdit" method="_increment_value" binds= [-10.0]]
+[connection signal="pressed" from="Frequency/Increments/One/Up" to="Frequency/LineEdit" method="_increment_value" binds= [1.0]]
+[connection signal="pressed" from="Frequency/Increments/One/Down" to="Frequency/LineEdit" method="_increment_value" binds= [-1.0]]
+[connection signal="pressed" from="Frequency/Increments/Tenth/Up" to="Frequency/LineEdit" method="_increment_value" binds= [0.1]]
+[connection signal="pressed" from="Frequency/Increments/Tenth/Down" to="Frequency/LineEdit" method="_increment_value" binds= [-0.1]]
+[connection signal="text_changed" from="Amplitude/LineEdit" to="Amplitude/LineEdit" method="_on_text_changed"]
+[connection signal="text_submitted" from="Amplitude/LineEdit" to="Amplitude/LineEdit" method="_on_text_submitted"]
+[connection signal="value_changed" from="Amplitude/LineEdit" to="." method="_on_amplitude_value_changed"]
+[connection signal="pressed" from="Amplitude/Increments/Ten/Up" to="Amplitude/LineEdit" method="_increment_value" binds= [10.0]]
+[connection signal="pressed" from="Amplitude/Increments/Ten/Down" to="Amplitude/LineEdit" method="_increment_value" binds= [-10.0]]
+[connection signal="pressed" from="Amplitude/Increments/One/Up" to="Amplitude/LineEdit" method="_increment_value" binds= [1.0]]
+[connection signal="pressed" from="Amplitude/Increments/One/Down" to="Amplitude/LineEdit" method="_increment_value" binds= [-1.0]]
+[connection signal="pressed" from="Amplitude/Increments/Tenth/Up" to="Amplitude/LineEdit" method="_increment_value" binds= [0.1]]
+[connection signal="pressed" from="Amplitude/Increments/Tenth/Down" to="Amplitude/LineEdit" method="_increment_value" binds= [-0.1]]
+[connection signal="pressed" from="Amplitude/Increments/Hundreth/Up" to="Amplitude/LineEdit" method="_increment_value" binds= [0.01]]
+[connection signal="pressed" from="Amplitude/Increments/Hundreth/Down" to="Amplitude/LineEdit" method="_increment_value" binds= [-0.01]]

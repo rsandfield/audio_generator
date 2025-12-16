@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=3 uid="uid://0navcu7wbufq"]
 
 [ext_resource type="Script" uid="uid://bok46c8g06dqy" path="res://scenes/ui/synth/visualizer.gd" id="1_xyuc7"]
-[ext_resource type="StyleBox" uid="uid://7sqo634n8tpu" path="res://scenes/ui/black.tres" id="2_a2rfy"]
+[ext_resource type="StyleBox" uid="uid://7sqo634n8tpu" path="res://scenes/ui/input/black.tres" id="2_a2rfy"]
 
 [node name="Visualizer" type="SubViewportContainer"]
 size_flags_horizontal = 4

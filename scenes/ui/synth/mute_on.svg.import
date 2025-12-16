@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://bacve3el034q7"
-path="res://.godot/imported/mute_on.svg-db9c415ca2f18e60e005c309ac4ddf0d.ctex"
+path="res://.godot/imported/mute_on.svg-8fb3d60347aae411ce10d9025051dcd3.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://scenes/ui/mute_on.svg"
-dest_files=["res://.godot/imported/mute_on.svg-db9c415ca2f18e60e005c309ac4ddf0d.ctex"]
+source_file="res://scenes/ui/synth/mute_on.svg"
+dest_files=["res://.godot/imported/mute_on.svg-8fb3d60347aae411ce10d9025051dcd3.ctex"]
 
 [params]
 

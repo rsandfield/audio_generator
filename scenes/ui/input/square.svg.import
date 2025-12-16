@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://c2dqaogrnwhkf"
-path="res://.godot/imported/mute_off.svg-21d6ecd5cd6b873c95a8d78a52288fd4.ctex"
+uid="uid://bpcilctwwwg6f"
+path="res://.godot/imported/square.svg-c9ae6ac1983d2f9d35a86dd39c14c00a.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://scenes/ui/mute_off.svg"
-dest_files=["res://.godot/imported/mute_off.svg-21d6ecd5cd6b873c95a8d78a52288fd4.ctex"]
+source_file="res://scenes/ui/input/square.svg"
+dest_files=["res://.godot/imported/square.svg-c9ae6ac1983d2f9d35a86dd39c14c00a.ctex"]
 
 [params]
 

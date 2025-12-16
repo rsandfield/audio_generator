@@ -1,21 +1,21 @@
-[gd_scene load_steps=10 format=3 uid="uid://cqow47bch5ocs"]
+[gd_scene load_steps=11 format=3 uid="uid://cqow47bch5ocs"]
 
 [ext_resource type="Script" uid="uid://sfh4rb5133ks" path="res://scenes/main.gd" id="1_02nsg"]
 [ext_resource type="PackedScene" uid="uid://c21k5klt4dpvw" path="res://scenes/ui/synth/audio.tscn" id="1_2p1s2"]
 [ext_resource type="PackedScene" uid="uid://0navcu7wbufq" path="res://scenes/ui/synth/visualizer.tscn" id="2_2p1s2"]
+[ext_resource type="PackedScene" uid="uid://4opgymebcc64" path="res://scenes/ui/input/signal.tscn" id="4_choun"]
 [ext_resource type="Script" uid="uid://31w1u0qmeyl5" path="res://common/signal/fundamental/sine_wave.gd" id="4_f8067"]
-[ext_resource type="Texture2D" uid="uid://bacve3el034q7" path="res://scenes/ui/mute_on.svg" id="5_tipki"]
-[ext_resource type="Texture2D" uid="uid://c2dqaogrnwhkf" path="res://scenes/ui/mute_off.svg" id="6_85g3d"]
-[ext_resource type="Texture2D" uid="uid://c7wmsw76nl3y1" path="res://scenes/ui/circle.svg" id="7_choun"]
-[ext_resource type="Texture2D" uid="uid://dggnwqxkvsc5y" path="res://scenes/ui/circle_dark.svg" id="8_ya4ey"]
+[ext_resource type="Texture2D" uid="uid://bacve3el034q7" path="res://scenes/ui/synth/mute_on.svg" id="5_tipki"]
+[ext_resource type="Texture2D" uid="uid://c2dqaogrnwhkf" path="res://scenes/ui/synth/mute_off.svg" id="6_85g3d"]
+[ext_resource type="Texture2D" uid="uid://c7wmsw76nl3y1" path="res://scenes/ui/synth/circle.svg" id="7_choun"]
+[ext_resource type="Texture2D" uid="uid://dggnwqxkvsc5y" path="res://scenes/ui/synth/circle_dark.svg" id="8_ya4ey"]
 
-[sub_resource type="Resource" id="Resource_vspwy"]
+[sub_resource type="Resource" id="Resource_ya4ey"]
 script = ExtResource("4_f8067")
 metadata/_custom_type_script = "uid://31w1u0qmeyl5"
 
 [node name="Main" type="Node2D"]
 script = ExtResource("1_02nsg")
-wave = SubResource("Resource_vspwy")
 
 [node name="Audio" parent="." instance=ExtResource("1_2p1s2")]
 
@@ -35,29 +35,79 @@ theme_override_constants/margin_top = 25
 theme_override_constants/margin_right = 25
 theme_override_constants/margin_bottom = 25
 
-[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/PanelContainer/MarginContainer"]
+[node name="Columns" type="HBoxContainer" parent="CanvasLayer/PanelContainer/MarginContainer"]
+layout_mode = 2
+theme_override_constants/separation = 50
+alignment = 1
+
+[node name="Signals" type="VBoxContainer" parent="CanvasLayer/PanelContainer/MarginContainer/Columns"]
 layout_mode = 2
 
-[node name="Visualizer" parent="CanvasLayer/PanelContainer/MarginContainer/VBoxContainer" instance=ExtResource("2_2p1s2")]
+[node name="Signal0" parent="CanvasLayer/PanelContainer/MarginContainer/Columns/Signals" instance=ExtResource("4_choun")]
+layout_mode = 2
+wave = SubResource("Resource_ya4ey")
+active = true
+
+[node name="Signal1" parent="CanvasLayer/PanelContainer/MarginContainer/Columns/Signals" instance=ExtResource("4_choun")]
+layout_mode = 2
+wave = SubResource("Resource_ya4ey")
+active = true
+
+[node name="Signal2" parent="CanvasLayer/PanelContainer/MarginContainer/Columns/Signals" instance=ExtResource("4_choun")]
+layout_mode = 2
+wave = SubResource("Resource_ya4ey")
+active = true
+
+[node name="Signal3" parent="CanvasLayer/PanelContainer/MarginContainer/Columns/Signals" instance=ExtResource("4_choun")]
+layout_mode = 2
+wave = SubResource("Resource_ya4ey")
+active = true
+
+[node name="Signal4" parent="CanvasLayer/PanelContainer/MarginContainer/Columns/Signals" instance=ExtResource("4_choun")]
+layout_mode = 2
+wave = SubResource("Resource_ya4ey")
+active = true
+
+[node name="Signal5" parent="CanvasLayer/PanelContainer/MarginContainer/Columns/Signals" instance=ExtResource("4_choun")]
+layout_mode = 2
+wave = SubResource("Resource_ya4ey")
+active = true
+
+[node name="Display" type="VBoxContainer" parent="CanvasLayer/PanelContainer/MarginContainer/Columns"]
 layout_mode = 2
 
-[node name="HBoxContainer" type="HBoxContainer" parent="CanvasLayer/PanelContainer/MarginContainer/VBoxContainer"]
+[node name="Visualizer" parent="CanvasLayer/PanelContainer/MarginContainer/Columns/Display" instance=ExtResource("2_2p1s2")]
 layout_mode = 2
 
-[node name="CheckButton" type="CheckButton" parent="CanvasLayer/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer"]
+[node name="HBoxContainer" type="HBoxContainer" parent="CanvasLayer/PanelContainer/MarginContainer/Columns/Display"]
+layout_mode = 2
+
+[node name="CheckButton" type="CheckButton" parent="CanvasLayer/PanelContainer/MarginContainer/Columns/Display/HBoxContainer"]
 layout_mode = 2
 theme_override_icons/checked = ExtResource("5_tipki")
 theme_override_icons/unchecked = ExtResource("6_85g3d")
 
-[node name="HSlider" type="HSlider" parent="CanvasLayer/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer"]
+[node name="HSlider" type="HSlider" parent="CanvasLayer/PanelContainer/MarginContainer/Columns/Display/HBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 1
 theme_override_icons/grabber = ExtResource("7_choun")
 theme_override_icons/grabber_highlight = ExtResource("7_choun")
 theme_override_icons/grabber_disabled = ExtResource("8_ya4ey")
-value = 100.0
+value = 20.0
 rounded = true
 
-[connection signal="toggled" from="CanvasLayer/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer/CheckButton" to="Audio" method="mute"]
-[connection signal="value_changed" from="CanvasLayer/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer/HSlider" to="Audio" method="set_volume"]
+[connection signal="signal_off" from="CanvasLayer/PanelContainer/MarginContainer/Columns/Signals/Signal0" to="." method="_on_signal_off"]
+[connection signal="signal_on" from="CanvasLayer/PanelContainer/MarginContainer/Columns/Signals/Signal0" to="." method="_on_signal_on"]
+[connection signal="signal_off" from="CanvasLayer/PanelContainer/MarginContainer/Columns/Signals/Signal1" to="." method="_on_signal_off"]
+[connection signal="signal_on" from="CanvasLayer/PanelContainer/MarginContainer/Columns/Signals/Signal1" to="." method="_on_signal_on"]
+[connection signal="signal_off" from="CanvasLayer/PanelContainer/MarginContainer/Columns/Signals/Signal2" to="." method="_on_signal_off"]
+[connection signal="signal_on" from="CanvasLayer/PanelContainer/MarginContainer/Columns/Signals/Signal2" to="." method="_on_signal_on"]
+[connection signal="signal_off" from="CanvasLayer/PanelContainer/MarginContainer/Columns/Signals/Signal3" to="." method="_on_signal_off"]
+[connection signal="signal_on" from="CanvasLayer/PanelContainer/MarginContainer/Columns/Signals/Signal3" to="." method="_on_signal_on"]
+[connection signal="signal_off" from="CanvasLayer/PanelContainer/MarginContainer/Columns/Signals/Signal4" to="." method="_on_signal_off"]
+[connection signal="signal_on" from="CanvasLayer/PanelContainer/MarginContainer/Columns/Signals/Signal4" to="." method="_on_signal_on"]
+[connection signal="signal_off" from="CanvasLayer/PanelContainer/MarginContainer/Columns/Signals/Signal5" to="." method="_on_signal_off"]
+[connection signal="signal_on" from="CanvasLayer/PanelContainer/MarginContainer/Columns/Signals/Signal5" to="." method="_on_signal_on"]
+[connection signal="toggled" from="CanvasLayer/PanelContainer/MarginContainer/Columns/Display/HBoxContainer/CheckButton" to="Audio" method="mute"]
+[connection signal="value_changed" from="CanvasLayer/PanelContainer/MarginContainer/Columns/Display/HBoxContainer/HSlider" to="Audio" method="set_volume"]
