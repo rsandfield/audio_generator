@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://cqow47bch5ocs"]
+[gd_scene load_steps=16 format=3 uid="uid://cqow47bch5ocs"]
 
 [ext_resource type="Script" uid="uid://sfh4rb5133ks" path="res://scenes/main.gd" id="1_02nsg"]
 [ext_resource type="PackedScene" uid="uid://c21k5klt4dpvw" path="res://scenes/ui/synth/audio.tscn" id="1_2p1s2"]
@@ -11,6 +11,26 @@
 [ext_resource type="Texture2D" uid="uid://dggnwqxkvsc5y" path="res://scenes/ui/synth/circle_dark.svg" id="8_ya4ey"]
 
 [sub_resource type="Resource" id="Resource_ya4ey"]
+script = ExtResource("4_f8067")
+metadata/_custom_type_script = "uid://31w1u0qmeyl5"
+
+[sub_resource type="Resource" id="Resource_85g3d"]
+script = ExtResource("4_f8067")
+metadata/_custom_type_script = "uid://31w1u0qmeyl5"
+
+[sub_resource type="Resource" id="Resource_choun"]
+script = ExtResource("4_f8067")
+metadata/_custom_type_script = "uid://31w1u0qmeyl5"
+
+[sub_resource type="Resource" id="Resource_eb6dy"]
+script = ExtResource("4_f8067")
+metadata/_custom_type_script = "uid://31w1u0qmeyl5"
+
+[sub_resource type="Resource" id="Resource_trceg"]
+script = ExtResource("4_f8067")
+metadata/_custom_type_script = "uid://31w1u0qmeyl5"
+
+[sub_resource type="Resource" id="Resource_a8y0u"]
 script = ExtResource("4_f8067")
 metadata/_custom_type_script = "uid://31w1u0qmeyl5"
 
@@ -50,27 +70,27 @@ active = true
 
 [node name="Signal1" parent="CanvasLayer/PanelContainer/MarginContainer/Columns/Signals" instance=ExtResource("4_choun")]
 layout_mode = 2
-wave = SubResource("Resource_ya4ey")
+wave = SubResource("Resource_85g3d")
 active = true
 
 [node name="Signal2" parent="CanvasLayer/PanelContainer/MarginContainer/Columns/Signals" instance=ExtResource("4_choun")]
 layout_mode = 2
-wave = SubResource("Resource_ya4ey")
+wave = SubResource("Resource_choun")
 active = true
 
 [node name="Signal3" parent="CanvasLayer/PanelContainer/MarginContainer/Columns/Signals" instance=ExtResource("4_choun")]
 layout_mode = 2
-wave = SubResource("Resource_ya4ey")
+wave = SubResource("Resource_eb6dy")
 active = true
 
 [node name="Signal4" parent="CanvasLayer/PanelContainer/MarginContainer/Columns/Signals" instance=ExtResource("4_choun")]
 layout_mode = 2
-wave = SubResource("Resource_ya4ey")
+wave = SubResource("Resource_trceg")
 active = true
 
 [node name="Signal5" parent="CanvasLayer/PanelContainer/MarginContainer/Columns/Signals" instance=ExtResource("4_choun")]
 layout_mode = 2
-wave = SubResource("Resource_ya4ey")
+wave = SubResource("Resource_a8y0u")
 active = true
 
 [node name="Display" type="VBoxContainer" parent="CanvasLayer/PanelContainer/MarginContainer/Columns"]
